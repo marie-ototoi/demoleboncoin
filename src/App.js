@@ -1,24 +1,22 @@
-import logo from './logo.svg';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import React from 'react';
+import Message from './components/Message';
 import './App.css';
 
 function App() {
+  // retrieves default ids from url
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>      
+      <div className="App">
+        <header className="App-header">
+          header
+        </header>
+        <Switch>
+          <Route path="/messages/:messageId"><Message /></Route>
+          <Route path="/(messages)?/(new)?">New</Route>
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
