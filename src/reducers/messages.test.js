@@ -15,10 +15,16 @@ describe('Messages reducer', () => {
       messageId: 24
     })).toEqual({ selected: 24 })
   })
+  it('should handle LOAD_MESSAGES', () => {
+    expect(reducer({ messages: [{ id: 1001, body: 'lorem' }] }, {
+      type: 'LOAD_MESSAGES',
+      messages: [{ id: 3422, body: 'lorem' }, { id: 2002, body: 'ipsum' }]
+    })).toEqual({ messages: [{ id: 3422, body: 'lorem' }, { id: 2002, body: 'ipsum' }] })
+  })
   it('should handle ADD_MESSAGE', () => {
     expect(reducer({ messages: [{ id: 1001, body: 'lorem' }] }, {
       type: 'ADD_MESSAGE',
-      message: { id: 2002, body: 'ipsum' }
-    })).toEqual({ messages: [{ id: 1001, body: 'lorem' }, { id: 2002, body: 'ipsum' }] })
+      message: { body: 'ipsum' }
+    })).toEqual({ messages: [{ id: 1001, body: 'lorem' }, { id: 1002, body: 'ipsum' }] })
   })
 })
