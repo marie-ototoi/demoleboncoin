@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import React from 'react';
+import ListMessages from './components/ListMessages';
 import Nav from './components/Nav';
 import Message from './components/Message';
 import PostMessage from './components/PostMessage';
@@ -11,6 +12,7 @@ function App() {
       <div className="App">
         <Nav />
         <StyledWrapper>
+          <ListMessages />
           <Switch>
             {/* Detail of a message */}
             <Route path="/messages/:messageId"><Message /></Route>
