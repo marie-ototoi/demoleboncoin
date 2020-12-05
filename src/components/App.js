@@ -1,5 +1,5 @@
 import { useHistory } from 'react-router-dom'
-import React, { useEffect, useState, useReducer, useRef } from 'react'
+import React, { useEffect, useState, useReducer } from 'react'
 import { useParams } from 'react-router'
 import ListMessages from './ListMessages'
 import Nav from './Nav'

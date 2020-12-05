@@ -54,6 +54,7 @@ function PostMessage (props) {
             type={fields[field].type}
             onChange={(e) => handleChange(e, field)}
             error={fields[field].error ? fields[field].message : false }
+            value={fields[field].value ? fields[field].value : ''}
           />
         </Form.Field>)
       })
