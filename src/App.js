@@ -1,20 +1,23 @@
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import React from 'react';
+import Nav from './components/Nav';
 import Message from './components/Message';
-import './App.css';
+import PostMessage from './components/PostMessage';
+import { StyledWrapper } from './components/WrapperStyles'
 
 function App() {
-  // retrieves default ids from url
   return (
     <Router>      
       <div className="App">
-        <header className="App-header">
-          header
-        </header>
-        <Switch>
-          <Route path="/messages/:messageId"><Message /></Route>
-          <Route path="/(messages)?/(new)?">New</Route>
-        </Switch>
+        <Nav />
+        <StyledWrapper>
+          <Switch>
+            {/* Detail of a message */}
+            <Route path="/messages/:messageId"><Message /></Route>
+            {/* Form to post a new message */}
+            <Route path="/(messages)?/(new)?"><PostMessage /></Route>
+          </Switch>
+        </StyledWrapper>
       </div>
     </Router>
   );

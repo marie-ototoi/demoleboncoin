@@ -3,6 +3,7 @@ import React from 'react'
 import { useParams } from 'react-router'
 
 function Message (props) {
+  // retrieves default ids from url
   const { messageId } = useParams()
   
   return (<div>
