@@ -4,11 +4,14 @@ import PropTypes from 'prop-types'
 function Message (props) {
   const { handleSelectMessage, message } = props
   const { body, id, subject, date, name } = message
-
+  const handleClick = (e, messageId) => {
+    handleSelectMessage(messageId)
+    e.preventDefault()
+  }
   // retrieves default ids from url  
   return (<article className="Message">
     <header>
-      <h1><a href={`#/messages/${id}`} onClick={(e) => handleSelectMessage(e, id)}>{subject}</a></h1>
+      <h1><a href={`#/messages/${id}`} onClick={e => handleClick(e, id)}>{subject}</a></h1>
       <h2>from {name}</h2>
       
     </header>

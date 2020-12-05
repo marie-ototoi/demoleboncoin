@@ -15,10 +15,7 @@ export default function reducer (state, action) {
       ...state,
       messages: [
         ...state.messages, 
-        {
-          ...action.message,
-          id: Math.max(...state.messages.map(m => m.id)) + 1
-        }
+        action.message
       ]
     }
   default:

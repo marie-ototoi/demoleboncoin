@@ -1,7 +1,7 @@
 
 export const getMessages = async(dispatchMessages) => {
   try {
-    //replace with fetch API
+    // replace with call to API
     let loadedMessages = [{
       subject: 'lorem',
       name: 'mariedest',
@@ -24,7 +24,9 @@ export const getMessages = async(dispatchMessages) => {
     throw new Error('An error occured while loading messages')
   }
 }
-
-export const selectMessage = async(dispatchMessages, messageId) => {
-  dispatchMessages({ type: 'SELECT_MESSAGE', messageId })
+export const addMessage = async(dispatchMessages, messages, newMessage) => {
+  // add call to API
+  let newId = Math.max(...messages.map(m => m.id)) + 1
+  dispatchMessages({ type: 'ADD_MESSAGE', message: { ...newMessage, id: newId } })
+  return newId
 }

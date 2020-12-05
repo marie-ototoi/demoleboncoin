@@ -1,19 +1,12 @@
 import reducer from './messages'
 
 const initialState = {
-  messages: [],
-  selected: undefined
+  messages: []
 }
 
 describe('Messages reducer', () => {
   it('should return the initial state', () => {
     expect(reducer(initialState, {})).toEqual(initialState)
-  })
-  it('should handle SELECT_MESSAGE', () => {
-    expect(reducer({}, {
-      type: 'SELECT_MESSAGE',
-      messageId: 24
-    })).toEqual({ selected: 24 })
   })
   it('should handle LOAD_MESSAGES', () => {
     expect(reducer({ messages: [{ id: 1001, body: 'lorem' }] }, {

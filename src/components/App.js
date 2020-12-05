@@ -6,7 +6,7 @@ import Nav from './Nav'
 import Message from './Message'
 import PostMessage from './PostMessage'
 import messagesReducer from '../reducers/messages'
-import { getMessages, selectMessage } from '../reducers/actions'
+import { getMessages, addMessage } from '../reducers/actions'
 import { StyledWrapper } from './WrapperStyles'
 
 function App() {
@@ -29,12 +29,16 @@ function App() {
     getMessages(dispatchMessages).catch((err) => { setError(err.toString()) })
   }, [])
   // show message
-  const handleSelectMessage = (event, id) => {  
-    event.preventDefault()  
-    console.log(event, id, history)
-    selectMessage(dispatchMessages, id).catch((err) => { setError(err.toString()) })
+  const handleSelectMessage = (id) => {
     history.push({ pathname: `/messages/${id}` })
-    
+  }
+  // post message
+  const handlePostMessage = (newMessage) => {
+    addMessage(dispatchMessages, messages.messages, newMessage)
+      .then(newId => {
+        history.push({ pathname: `/messages/${newId}` })
+      })
+      .catch((err) => { setError(err.toString()) })
   }
   return (
     <div className="App">
@@ -48,7 +52,7 @@ function App() {
           <Message message={message} detailed={true} handleSelectMessage={handleSelectMessage} />
         }
         { !message && /* Form to post a new message */
-          <PostMessage />
+          <PostMessage handlePostMessage={handlePostMessage} />
         }
       </StyledWrapper>
     </div>
