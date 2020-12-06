@@ -6,9 +6,8 @@
 Edit the code in /src/reducers/action.js to replace static data with call to API.
 
 ### Browsers compatibility
-Checked with BrowserStack on 12/06/2020 ont the last versions of Edge, IE, Chrome, Firefox, Opera, Safari.\
-If compatibility with IE is needed, use the polyfillLoader from polyfill-io-feature-detection for Promise (and fetch when API is connected).
-
+Checked on Firefox 83, Chrome 87 and Safari 14 on Mac\
+and through BrowserStack on Edge 87 and Opera 72.
 
 ## Available Scripts
 In the project directory, you can run:
