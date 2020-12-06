@@ -7,7 +7,7 @@ import Message from './Message'
 import PostMessage from './PostMessage'
 import messagesReducer from '../reducers/messages'
 import { getMessages, addMessage } from '../reducers/actions'
-import { StyledWrapper } from './WrapperStyles'
+import { StyledApp } from './AppStyles'
 
 function App() {
   // init messages reducer with default values
@@ -41,21 +41,27 @@ function App() {
       .catch((err) => { setError(err.toString()) })
   }
   return (
-    <div className="App">
-      <Nav />
+    <StyledApp className="App">
+      <header className="App-header">
+        <Nav />
+      </header>      
       { (error !== '') &&
         <div className='App-error'>{error}</div>
       }
-      <StyledWrapper>
-        <ListMessages messages={messages.messages} handleSelectMessage={handleSelectMessage} />
-        { message && /* Detail of a message */
-          <Message message={message} detailed={true} handleSelectMessage={handleSelectMessage} />
-        }
-        { !message && /* Form to post a new message */
-          <PostMessage handlePostMessage={handlePostMessage} />
-        }
-      </StyledWrapper>
-    </div>
+      <main className="App-body">
+        <aside className="App-body-aside">
+          <ListMessages messages={messages.messages} handleSelectMessage={handleSelectMessage} />
+        </aside>
+        <section className="App-body-section">
+          { message && /* Detail of a message */
+            <Message message={message} detailed={true} handleSelectMessage={handleSelectMessage} />
+          }
+          { !message && /* Form to post a new message */
+            <PostMessage handlePostMessage={handlePostMessage} />
+          }
+        </section>
+      </main>
+    </StyledApp>
   )
 }
 

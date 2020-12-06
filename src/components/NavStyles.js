@@ -1,8 +1,11 @@
 import styled from 'styled-components'
 
 export const StyledNav = styled.nav`
-  box-shadow: 0 2px 4px 0 rgba(0,0,0,.15);
+  max-width: 1000px;
+  margin: 0 auto;
   padding: 10px;
+  display: flex;
+  justify-content: space-between;
 
   & h1 {
     margin: 0;

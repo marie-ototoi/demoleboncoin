@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 import { Button, Form } from 'semantic-ui-react'
 import PropTypes from 'prop-types'
+import { StyledPostMessage } from './PostMessageStyles'
 
 function PostMessage (props) {
   const [fields, setFields] = useState({
     name: { error: false, message: 'The name should not be empty', match: /^.+$/, label: 'Name', placeholder: 'Your name or pseudo', type: 'text', required: true },
-    email: { error: false, message: 'Coder', match: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, label: 'Email', placeholder: 'Your email', type: 'email', required: true },
+    email: { error: false, message: 'Your email should be valid', match: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, label: 'Email', placeholder: 'Your email', type: 'email', required: true },
     subject: { error: false, message: 'The topic should not be empty', match: /^.+$/, label: 'Subject', placeholder: 'Subject of your message', type: 'text', required: true },
     body: { error: false, message: 'The message should not be empty', match: /^.+$/, label: 'Message', placeholder: 'Your message', type: 'textarea', required: true }
   })
@@ -42,31 +43,37 @@ function PostMessage (props) {
     In case the form for a message would be instanciated several times in the app
   */
   const [idsForm] = useState(Math.random())
-  return (<Form onSubmit={handleSubmit}>
-    {
-      Object.keys(fields).map(field => {
-        const Component = fields[field].type !== 'textarea' ? Form.Input : Form.TextArea
-        return (<Form.Field key={`field_${field}_${idsForm}`}>
-          <label htmlFor={`id_${field}_${idsForm}`}>{fields[field].label}</label>
-          <Component
-            id={`id_${field}_${idsForm}`}
-            placeholder={fields[field].placeholder}
-            type={fields[field].type}
-            onChange={(e) => handleChange(e, field)}
-            error={fields[field].error ? fields[field].message : false }
-            value={fields[field].value ? fields[field].value : ''}
-          />
-        </Form.Field>)
-      })
-    }
-    <Button
-      type='submit'
-      disabled={
-        /* Prevents user from submitting the form if there's an error or empty value */
-        (Object.keys(fields).filter(key => fields[key].error || (fields[key].required && !fields[key].value)).length !== 0)
+  return (<StyledPostMessage>
+    <Form onSubmit={handleSubmit}>
+      {
+        Object.keys(fields).map(field => {
+          const Component = fields[field].type !== 'textarea' ? Form.Input : Form.TextArea
+          return (<Form.Field key={`field_${field}_${idsForm}`}>
+            <label
+              htmlFor={`id_${field}_${idsForm}`}
+              color="grey"
+            >{fields[field].label}</label>
+            <Component
+              id={`id_${field}_${idsForm}`}
+              placeholder={fields[field].placeholder}
+              type={fields[field].type}
+              onChange={(e) => handleChange(e, field)}
+              error={fields[field].error ? fields[field].message : false }
+              value={fields[field].value ? fields[field].value : ''}
+              
+            />
+          </Form.Field>)
+        })
       }
-    >Submit</Button>
-  </Form>)
+      <Button
+        type='submit'
+        disabled={
+          /* Prevents user from submitting the form if there's an error or empty value */
+          (Object.keys(fields).filter(key => fields[key].error || (fields[key].required && !fields[key].value)).length !== 0)
+        }
+      >Submit</Button>
+    </Form>
+  </StyledPostMessage>)
 }
 PostMessage.propTypes = {
   handlePostMessage: PropTypes.func.isRequired
