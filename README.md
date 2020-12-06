@@ -3,6 +3,7 @@
 ## Summary
 
 The app is a standard React app, created with React-Create-App.\
+It allows to read messages and post a new message.\
 The components are in /src/components/.\
 The reducer to handle messages is in /src/reducers/. Edit /src/reducers/action.js to replace static data with call to API.\
 
