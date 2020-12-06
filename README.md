@@ -1,11 +1,12 @@
 # Le Bon Coin demo
 
-## To do before production
+## Summary
 
-### Connection to the API
-Edit the code in /src/reducers/action.js to replace static data with call to API.
+The app is a standard React app, created with React-Create-App.\
+The components are in /src/components/.\
+The reducer to handle messages is in /src/reducers/. Edit /src/reducers/action.js to replace static data with call to API.\
 
-### Browsers compatibility
+## Browsers compatibility
 Checked on Firefox 83, Chrome 87 and Safari 14 on Mac\
 and through BrowserStack on Edge 87 and Opera 72.
 
