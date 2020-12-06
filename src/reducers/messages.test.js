@@ -17,7 +17,7 @@ describe('Messages reducer', () => {
   it('should handle ADD_MESSAGE', () => {
     expect(reducer({ messages: [{ id: 1001, body: 'lorem' }] }, {
       type: 'ADD_MESSAGE',
-      message: { body: 'ipsum' }
+      message: { body: 'ipsum', id: 1002 }
     })).toEqual({ messages: [{ id: 1001, body: 'lorem' }, { id: 1002, body: 'ipsum' }] })
   })
 })
