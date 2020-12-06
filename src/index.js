@@ -15,4 +15,3 @@ ReactDOM.render(<Router>
 </Router>,
 document.getElementById('root')
 )
-
